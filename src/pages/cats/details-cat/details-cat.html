@@ -12,8 +12,8 @@
 
 <ion-content padding>
   <ion-slides autoplay="2000" loop="true" speed="500" pager *ngIf="imagesBreed.length" class="vitrina">
-    <ion-slide *ngFor="let image of imagesBreed;let i = index" class="vitrina" (click)="goToShowCase(multimedia)">
-      <preload-img [src]="image.url" style="height:400px">
+    <ion-slide *ngFor="let image of imagesBreed;let i = index" class="vitrina">
+      <preload-img [src]="image.url">
       </preload-img>
     </ion-slide>
   </ion-slides>
