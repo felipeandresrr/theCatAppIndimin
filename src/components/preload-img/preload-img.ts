@@ -15,6 +15,9 @@ export class PreloadImgComponent implements OnInit {
     this.loaded = false;
     
   }
+  /**
+   *  Carga Lenta de Imagen por temas de performance
+   */
   async ngOnInit() {
     var img = new Image();  
     var event:EventEmitter<boolean>;

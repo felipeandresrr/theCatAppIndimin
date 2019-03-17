@@ -28,6 +28,7 @@ export class GamePage {
   loaded: boolean = false;
   itemSelected: boolean = false;
   playAgain: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public http: HttpProvider, private storage: Storage, public loadingCtrl: LoadingController) {
   }
@@ -38,6 +39,9 @@ export class GamePage {
     this.loadDataUser();
   }
 
+  /**
+   * Carga de las razas disponibles
+   */
   loadBreed() {
     this.loading = this.loadingCtrl.create({
       spinner: 'hide',
@@ -57,6 +61,9 @@ export class GamePage {
     });
   }
 
+  /**
+   * Carga los datos del usuario
+   */
   loadDataUser(){
     this.storage.get('dataUser').then((val) => {
       if(val != null) {
@@ -70,6 +77,9 @@ export class GamePage {
     });
   }
 
+  /**
+   * Obtiene 3 razas al azar desde el arreglo completo
+   */
   async getRandom() {
     for(let i = 0; i < 3; i++){
       let rd = Math.floor(Math.random() * this.breeds.length);
@@ -80,6 +90,9 @@ export class GamePage {
     this.getCorrectBreed();
   }
 
+  /**
+   * Selecciona una raza al azar para que sea la correcta
+   */
   getCorrectBreed(){
     let random = Math.floor(Math.random() * this.breedsRandom.length);
     this.breedCorrect.push(this.breedsRandom[random]);
@@ -87,11 +100,19 @@ export class GamePage {
     this.loaded = true;
   }
 
+  /**
+   * elige la raza seleccionada para pintar los bordess
+   * @param item 
+   * @param i 
+   */
   chooseItem(item,i){
     this.breedEligible = item;
     this.itemSelected = i;
   }
 
+  /**
+   * Hace la lógica del juego, además inyecta los datos del juego
+   */
   validateItem(){
     if(this.breedEligible.name === this.breedCorrect[0].name){
       this.porcentajeExito = (this.porcentajeExito+1) > 100 ? 100 : this.porcentajeExito+1;
@@ -109,6 +130,10 @@ export class GamePage {
     this.playAgain = true;
   }
 
+  /**
+   * Carga asincrona de Imagen por raza
+   * @param breed 
+   */
   async getBreedImage(breed) {
     return await this.http.getBreedImage(breed, 1).then(data => {
       return data[0].url;
@@ -117,6 +142,9 @@ export class GamePage {
     });
   }
 
+  /**
+   * Resetea las configuraciónes para un nuevo juego
+   */
   playGameAgain(){
     this.breeds = [];
     this.breedsRandom = [];

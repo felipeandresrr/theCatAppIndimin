@@ -29,6 +29,10 @@ export class DetailsCatPage {
     this.loadImages(this.breed);
   }
 
+  /**
+   * Carga de carrousel de imágenes por raza
+   * @param breed
+   */
   loadImages(breed) {
     this.http.getBreedImage(breed.id, 8).then(data => {
       this.imagesBreed = data;

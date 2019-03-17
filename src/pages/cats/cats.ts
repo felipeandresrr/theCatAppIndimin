@@ -26,7 +26,9 @@ export class CatsPage {
     console.log('ionViewDidLoad CatsPage');
     this.loadBreed();
   }
-
+  /**
+   * Carga de las Razas disponibles
+   */
   loadBreed() {
     this.http.getBreeds().subscribe(async data => {
       this.breeds = JSON.parse(data['_body']);
@@ -39,6 +41,10 @@ export class CatsPage {
     });
   }
 
+  /**
+   * Carga asincrona de Imagen por raza
+   * @param breed 
+   */
   async getBreedImage(breed) {
     return await this.http.getBreedImage(breed, 1).then(data => {
       return data[0].url;
@@ -47,9 +53,18 @@ export class CatsPage {
     });
   }
 
+  /**
+   * Llamada a la página del detalle de la raza seleccionada
+   * @param breed
+   */
   detailsCat(breed) {
     this.navCtrl.push(DetailsCatPage, { breed: breed });
   }
+
+  /**
+   * Filtro de búsqueda para las razas
+   * @param e 
+   */
   updateSearch(e) {
     if (!this.searchBreed) {
       this.breeds = this.breedsFinal;
@@ -62,6 +77,10 @@ export class CatsPage {
 
   }
 
+  /**
+   * Cancela el filtro de búqueda
+   * @param e 
+   */
   onCancel(e) {
     this.breeds = this.breedsFinal;
   }
