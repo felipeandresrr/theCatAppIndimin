@@ -1,0 +1,6 @@
+<div class="figure" *ngIf="loaded == false">
+  <ion-spinner name="dots"></ion-spinner>
+</div>
+<div class="figure"  *ngIf="loaded == true">
+  <img [src]="src" (load)="ngOnLoad()" imageViewer/>
+</div>

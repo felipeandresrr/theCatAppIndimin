@@ -1,0 +1,32 @@
+preload-img{
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center); 
+    width: 100%;
+    height: 100%;
+    div{
+        // height: 100%;
+        width: auto;
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        &.figure{
+            // height: 100%;
+            width: auto;
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(center);
+            img{
+                // height: 400px;
+                width: auto;
+            }
+        }
+        &.loading{
+            @include flexbox();
+            @include align-items(center);
+            @include justify-content(flex-start);
+            //  height: 100%;
+            width: auto;
+        }
+    }
+}

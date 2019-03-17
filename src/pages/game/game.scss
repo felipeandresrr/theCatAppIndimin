@@ -1,0 +1,29 @@
+page-game {
+    .card-background-page {
+        ion-card {
+            position: relative;
+            text-align: center;
+        }
+    }
+    ion-grid {
+        height: 100%;
+        justify-content: center;
+    }
+    .col {
+        top: -50%;
+    }
+    preload-img div.figure img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+    .gameClass {
+        height: 100px !important;
+        width: 100% !important;
+    }
+    .borderCard {
+        border: 2px solid #3E007F;
+    }
+    ion-footer button {
+        width: 100% !important;
+    }
+}
